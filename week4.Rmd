@@ -1,7 +1,19 @@
 ---
 title: "Untitled"
-output: html_document
+output:
+  flexdashboard::flex_dashboard:
+  runtime: flexdashboard
 ---
+
+
+This is an example of an interactive dashboard...
+
+    
+Column {data-width=600}
+-------------------------------------
+### Chart 1
+
+
 ```{r warning=FALSE}
 library(plotly)
 library(reshape2)
@@ -12,14 +24,14 @@ GB_auto <- raster::getData('GADM',
                            country="GBR", 
                            level=0, 
                            #set the path to store your data in
-                           path='week4/', 
+                           path='data/', 
                            download=TRUE)
 
 GBclim <- raster::getData("worldclim", 
                           res=5, 
                           var="tmean",
                           #set the path to store your data in
-                          path='week4/',
+                          path='data/',
                           download=TRUE)
 
 month <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", 
@@ -57,3 +69,8 @@ ihist<-plot_ly(alpha = 0.6) %>%
 ihist
 ```
 
+
+Column {data-width=400}
+-------------------------------------
+
+### Chart 2
